@@ -1,0 +1,18 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html {
+    background-attachment: fixed;
+    background-image: url(images/painting-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body {
+    max-width: 48em;
+    margin: 0 auto;
+    padding: 0 2em;
+}
