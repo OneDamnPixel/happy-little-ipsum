@@ -7,6 +7,7 @@
 }
 
 html {
+    min-height: 100%;
     background-attachment: fixed;
     background-image: url(images/painting-bg.jpg);
     background-repeat: no-repeat;
@@ -51,7 +52,7 @@ body {}
 }
 
 .generated-content {
-    padding: 2em;
+    padding: 1em 2em;
     background-color: rgba(0, 0, 0, 0.75);
     border-radius: 0.5em;
     color: white;
@@ -59,7 +60,7 @@ body {}
 
 .footer {
     margin-top: 4em;
-    padding: 2em;
+    padding: 2em 0;
     background-color: rgba(0, 0, 0, 0.75);
     color: white;
 
