@@ -1,0 +1,71 @@
+@import 'normalize';
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html {
+    background-attachment: fixed;
+    background-image: url(images/painting-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    line-height: 1.5;
+}
+
+body {}
+
+.container {
+    margin: 0 auto;
+    padding: 0 2em;
+}
+
+.container--small {
+    max-width: 32em;
+}
+
+.container--medium {
+    max-width: 48em;
+}
+
+.container--large {
+    max-width: 64em;
+}
+
+.header {
+    padding: 15% 0;
+    text-align: center;
+}
+
+.logo {
+    max-width: 32em;
+}
+
+.generate-options {
+    margin-bottom: 2em;
+    padding: 2em;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 0.5em;
+    color: white;
+}
+
+.generated-content {
+    padding: 2em;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 0.5em;
+    color: white;
+}
+
+.footer {
+    margin-top: 4em;
+    padding: 2em;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+
+    a {
+        font-weight: 700;
+        text-decoration: none;
+        color: white;
+    }
+}
