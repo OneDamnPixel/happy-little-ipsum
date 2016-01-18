@@ -56,6 +56,40 @@ body {}
     background-color: rgba(0, 0, 0, 0.75);
     border-radius: 0.5em;
     color: white;
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+}
+
+.increment-button {
+    height: 32px;
+    width: 32px;
+    border: 1px solid white;
+    border-radius: 50px;
+    background-color: transparent;
+    line-height: 1;
+}
+
+.generate-button {
+    height: 32px;
+    padding-right: 1em;
+    padding-left: 1em;
+    border: 1px solid white;
+    border-radius: 50px;
+    background-color: transparent;
+    line-height: 1;
+}
+
+input {
+    height: 34px;
+    width: 50px;
+    border: 0;
+    background-color: transparent;
+    color: white;
+    line-height: 1;
+    text-align: center;
 }
 
 .generated-content {

@@ -16,18 +16,31 @@
         </div>
         <main class="container container--medium" role="main">
             <div class="generate-options">
-                actions go here
+                <label># of paragraphs</label>
+                <button class="increment-button js-paragraph-minus-button">-</button>
+                <input class="js-paragraph-input" max="100" min="1" type="number" value="4">
+                <button class="increment-button js-paragraph-plus-button">+</button>
+
+                <br><br>
+
+                <label>Min. quotes per paragraph</label>
+                <button class="increment-button js-quote-min-minus-button">-</button>
+                <input class="js-quote-min-input" min="1" type="number" value="3">
+                <button class="increment-button js-quote-min-plus-button">+</button>
+
+                <br><br>
+
+                <label>Max. quotes per paragraph</label>
+                <button class="increment-button js-quote-max-minus-button">-</button>
+                <input class="js-quote-max-input" min="1" type="number" value="5">
+                <button class="increment-button js-quote-max-plus-button">+</button>
+
+                <br><br>
+
+                <button class="generate-button js-generate-button">Generate</button>
             </div>
-            <div class="generated-content">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut malesuada, justo a gravida aliquet, ipsum metus accumsan dui, tempus sollicitudin enim lectus sit amet turpis. Aenean lacinia vulputate egestas. Curabitur ante eros, faucibus ut eleifend eu, ullamcorper quis mi. Donec mollis libero nec nisl tristique egestas. Nunc vestibulum justo sit amet scelerisque efficitur. Nulla facilisi. Vestibulum a tortor eget quam fermentum lacinia eget eget ligula. Nullam interdum rhoncus metus quis varius. Duis ut iaculis libero. Fusce euismod semper augue, eu consectetur nisl varius et. Ut facilisis orci vitae elementum mattis. Donec varius tortor at auctor mattis.</p>
+            <div class="generated-content js-render-container">
 
-                <p>Curabitur vitae dolor sed tortor eleifend vehicula. Nunc eu mollis ligula. Suspendisse in porttitor dolor, quis elementum lectus. Proin sit amet lacinia purus. Fusce egestas ullamcorper risus id suscipit. Sed tempor hendrerit nulla, eu consequat justo egestas vel. Fusce in purus diam. Ut sodales viverra magna et tempor. Nulla facilisi.</p>
-
-                <p>In dui felis, ornare ac laoreet ut, placerat vel felis. Fusce luctus nunc sed massa venenatis porta. Vestibulum tristique luctus orci, ut euismod mauris faucibus ac. Duis aliquam ex et lorem convallis, in interdum erat mattis. Aliquam erat volutpat. Praesent tempus ex id tempus gravida. In ut condimentum odio.</p>
-
-                <p>Praesent eu est eget ligula porttitor facilisis at mollis nisl. Morbi molestie non nulla id rhoncus. Nullam purus justo, vulputate ac lacinia sit amet, tincidunt scelerisque arcu. Pellentesque diam est, rutrum quis tempor sed, vestibulum ut dolor. Etiam enim risus, accumsan vitae rutrum nec, sodales vel libero. Curabitur a ante justo. Vivamus porta cursus sem, id scelerisque risus tincidunt feugiat. Aenean porttitor mauris elementum semper congue. Sed aliquet in nisl vel pretium. Vivamus vitae scelerisque mauris. Nunc tempor, ante eu malesuada maximus, enim felis tincidunt purus, a tempor nisl magna vel sapien. Nullam sit amet ipsum finibus, commodo lectus at, porta erat. Morbi vel porttitor quam, sagittis efficitur sapien.</p>
-
-                <p>Proin pellentesque erat ut est porta, imperdiet bibendum lorem facilisis. Curabitur nisi sapien, porttitor sit amet metus vel, semper interdum lorem. Integer tincidunt egestas est, sit amet sagittis est posuere vel. Nunc et ultrices urna. Vestibulum et cursus nisi. Fusce a lacinia nibh. Donec molestie mi ipsum, et faucibus nisi mollis nec.</p>
             </div>
         </main>
         <footer class="footer" role="contentinfo">
@@ -35,5 +48,7 @@
                 Made with love by <a href="">Elena</a>, <a href="">Daniel</a>, and <a href="">Corey</a>.
             </div>
         </footer>
+
+        <script src="js/main.js"></script>
     </body>
 </html>
