@@ -1,6 +1,14 @@
 (function() {
 
-    // Happy little quotes
+    ////////////////////////////////////////
+    // Happy Little Ipsum
+    ////////////////////////////////////////
+
+    // Happy little variables
+    var numberOfParagraphs;
+    var quoteMin;
+    var quoteMax;
+
     var quotes = [
         "That'll be our little secret."
         , "In painting, you have unlimited power. You have the ability to move mountains. You can bend rivers. But when I get home, the only thing I have power over, is the garbage."
@@ -65,6 +73,51 @@
         , "When we teach people to paint this is the one they fall in love with. It works so well."
     ];
 
+
+
+    // Happy little helper functions
+    function getRandomIntInclusive(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function getRandomValueFromArray(array) {
+        var index = Math.floor(Math.random() * array.length);
+        return array[index];
+    }
+
+
+
+    // Happily builds out a single paragraph
+    var buildParagraph = function(min, max) {
+        var numberOfQuotes;
+        var currentQuote = "";
+        var paragraph = [];
+
+        numberOfQuotes = getRandomIntInclusive(min, max);
+
+        for (var i = 0; i < numberOfQuotes; i++) {
+            currentQuote = getRandomValueFromArray(quotes);
+
+            // Ensure that the quote is unique to the paragraph
+            if (paragraph.indexOf(currentQuote) === -1) {
+                paragraph.push(currentQuote);
+            } else {
+                // If it's not unique, do the loop again
+                i--;
+            }
+        }
+
+        return paragraph.join(" ");
+    };
+
+
+
+
+
+    ////////////////////////////////////////
+    // UI Rendering
+    ////////////////////////////////////////
+
     // Element references
     var paragraphInput = document.querySelector(".js-paragraph-input");
     var paragraphMinusButton = document.querySelector(".js-paragraph-minus-button");
@@ -81,51 +134,11 @@
     var generateButton = document.querySelector(".js-generate-button");
     var renderContainer = document.querySelector(".js-render-container");
 
-    // Generate settings
-    var numberOfParagraphs;
-    var quoteMin;
-    var quoteMax;
-
 
 
     // Helper functions
-    function getRandomIntInclusive(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    function getRandomValueFromArray(array) {
-        var index = Math.floor(Math.random() * array.length);
-        return array[index];
-    }
-
     function clearRenderContainer() {
         renderContainer.innerHTML = "";
-    };
-
-
-
-    // Builds out a single paragraph
-    var buildParagraph = function(min, max) {
-        var numberOfQuotes;
-        var currentQuote = "";
-        var paragraph = [];
-
-        // Determine the number of sentences for the current paragraph, including min and max values
-        numberOfQuotes = getRandomIntInclusive(min, max);
-
-        for (var i = 0; i < numberOfQuotes; i++) {
-            currentQuote = getRandomValueFromArray(quotes);
-
-            // Ensure that the quote is unique to the paragraph
-            if (paragraph.indexOf(currentQuote) === -1) {
-                paragraph.push(currentQuote);
-            } else {
-                // If it's not unique, do the whole loop over
-                i--;
-            }
-        }
-
-        return paragraph.join(" ");
     };
 
 
@@ -146,13 +159,22 @@
         renderContainer.innerHTML = output;
     };
 
-    generateButton.addEventListener("click", renderIpsum);
-
     renderIpsum();
 
 
 
-    // Paragraph input validation
+
+
+    ////////////////////////////////////////
+    // Event Listeners
+    ////////////////////////////////////////
+
+    // Generate happy little ipsum
+    generateButton.addEventListener("click", renderIpsum);
+
+
+
+    // Paragraph inputs
     paragraphInput.addEventListener('blur', function(event) {
         // If paragraph input value is less than the minimum allowed value
         if (parseInt(paragraphInput.value, 10) < 1) {
@@ -189,7 +211,7 @@
 
 
 
-    // Min input validation
+    // Min inputs
     quoteMinInput.addEventListener('blur', function(event) {
         // If min quotes input value is less than minimum allowed value
         if (parseInt(quoteMinInput.value, 10) < 1) {
@@ -226,7 +248,7 @@
 
 
 
-    // Max input validation
+    // Max inputs
     quoteMaxInput.addEventListener('blur', function(event) {
         // If max quotes input value is less than min quotes input value
         if (parseInt(quoteMaxInput.value, 10) < parseInt(quoteMinInput.value, 10)) {
