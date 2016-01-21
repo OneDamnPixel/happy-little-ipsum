@@ -1,0 +1,5 @@
+@mixin mq($value, $property: min-width, $media: screen) {
+    @media #{$media} and ($property: $value) {
+        @content;
+    }
+}

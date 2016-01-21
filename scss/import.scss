@@ -1,4 +1,5 @@
 @import 'normalize';
+@import 'mixins';
 
 *,
 *:before,
@@ -8,21 +9,22 @@
 
 html {
     line-height: 1.5;
+    background-color: black;
+
+    background-image: url('images/happy-little-bg-medium.png');
+    background-position: top center;
+    background-repeat: no-repeat;
+
+    @include mq(64em) {
+        background-image: url('images/happy-little-bg-large.png');
+    }
+
+    @include mq(80em) {
+        background-size: contain;
+    }
 }
 
 body {}
-
-.background {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    background-image: url(images/painting-bg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
 .container {
     margin: 0 auto;
@@ -103,6 +105,7 @@ input {
     margin-top: 4em;
     padding: 2em 0;
     background-color: rgba(0, 0, 0, 0.75);
+    text-align: center;
     color: white;
 
     a {
