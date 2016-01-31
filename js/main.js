@@ -161,7 +161,7 @@
             elem.setSelectionRange(origSelectionStart, origSelectionEnd);
         } else {
             // clear temporary content
-            target.textContent = "";
+            target.remove();
         }
 
         return succeed;
