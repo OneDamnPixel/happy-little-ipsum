@@ -86,6 +86,88 @@
     }
 
 
+    function copyToClipboardMsg(elem, msgElem) {
+        var succeed = copyToClipboard(elem);
+        var msg;
+        var errorClass;
+
+        if (!succeed) {
+            errorClass = "is-error";
+            msg = "Copy not supported or blocked."
+        } else {
+            errorClass = "is-success";
+            msg = "Copied!"
+        }
+
+        msgElem.classList.add(errorClass);
+        msgElem.innerHTML = msg;
+
+        setTimeout(function() {
+            msgElem.classList.remove(errorClass);
+            msgElem.innerHTML = "";
+        }, 2000);
+    }
+
+    function copyToClipboard(elem) {
+        // create hidden text element, if it doesn't already exist
+        var targetId = "_hiddenCopyText_";
+        var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
+        var origSelectionStart, origSelectionEnd;
+
+        if (isInput) {
+            // can just use the original source element for the selection and copy
+            target = elem;
+            origSelectionStart = elem.selectionStart;
+            origSelectionEnd = elem.selectionEnd;
+        } else {
+            // must use a temporary form element for the selection and copy
+            target = document.getElementById(targetId);
+
+            if (!target) {
+                var target = document.createElement("textarea");
+                target.style.position = "fixed";
+                target.style.top = "0";
+                target.style.left = "0";
+                target.style.height = "0";
+                target.style.width = "0";
+                target.id = targetId;
+                document.body.appendChild(target);
+            }
+
+            target.textContent = elem.textContent;
+        }
+
+        // select the content
+        var currentFocus = document.activeElement;
+        target.focus();
+        target.setSelectionRange(0, target.value.length);
+
+        // copy the selection
+        var succeed;
+
+        try {
+            succeed = document.execCommand("copy");
+        } catch(e) {
+            succeed = false;
+        }
+
+        // restore original focus
+        if (currentFocus && typeof currentFocus.focus === "function") {
+            currentFocus.focus();
+        }
+
+        if (isInput) {
+            // restore prior selection
+            elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+        } else {
+            // clear temporary content
+            target.textContent = "";
+        }
+
+        return succeed;
+    }
+
+
 
     // Happily builds out a single paragraph
     var buildParagraph = function(min, max) {
@@ -134,6 +216,8 @@
     var includeHTMLInput = document.querySelector(".js-include-html-input");
 
     var generateButton = document.querySelector(".js-generate-button");
+    var copyTextButton = document.querySelector(".js-copy-text-button");
+    var copyMessage = document.querySelector('.js-copy-message');
     var renderContainer = document.querySelector(".js-render-container");
 
 
@@ -179,6 +263,15 @@
 
     // Generate happy little ipsum
     generateButton.addEventListener("click", renderIpsum);
+
+
+
+    // Generate happy little ipsum
+    copyTextButton.addEventListener("click", function(e) {
+        e.preventDefault;
+
+        copyToClipboardMsg(renderContainer, copyMessage);
+    });
 
 
 

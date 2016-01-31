@@ -94,7 +94,49 @@ body {}
     text-align: center;
 }
 
+.copy-text-button-wrapper {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+}
+
+.copy-text-button {
+    height: 16px;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    color: white;
+}
+
+.copy-message {
+    position: absolute;
+    top: -2px;
+    right: 21px;
+    background-color: rgba(white, 0.5);
+    white-space: nowrap;
+    line-height: 1;
+
+    &.is-error {
+        padding: 4px;
+        border-radius: 2px;
+        background-color: tomato;
+    }
+
+    &.is-success {
+        padding: 4px;
+        border-radius: 2px;
+        background-color: limegreen;
+    }
+}
+
+.clipboard-icon {
+    height: 16px;
+    width: 16px;
+    fill: currentColor;
+}
+
 .generated-content {
+    position: relative;
     padding: 1em 2em;
     background-color: rgba(0, 0, 0, 0.75);
     border-radius: 0.5em;
