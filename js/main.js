@@ -131,6 +131,8 @@
     var quoteMaxMinusButton = document.querySelector(".js-quote-max-minus-button");
     var quoteMaxPlusButton = document.querySelector(".js-quote-max-plus-button");
 
+    var includeHTMLInput = document.querySelector(".js-include-html-input");
+
     var generateButton = document.querySelector(".js-generate-button");
     var renderContainer = document.querySelector(".js-render-container");
 
@@ -146,6 +148,7 @@
     // Render function
     var renderIpsum = function() {
         var output = "";
+        var includeHTML = includeHTMLInput.checked;
 
         clearRenderContainer();
         numberOfParagraphs = parseInt(paragraphInput.value, 10);
@@ -153,7 +156,12 @@
         quoteMax = parseInt(quoteMaxInput.value, 10);
 
         for (var i = 0; i < numberOfParagraphs; i++) {
-            output += "<p>" + buildParagraph(quoteMin, quoteMax) + "</p>";
+            if (includeHTML) {
+                output += "<p>&lt;p&gt;" + buildParagraph(quoteMin, quoteMax) + "&lt;/p&gt;</p>";
+            } else {
+                output += "<p>" + buildParagraph(quoteMin, quoteMax) + "</p>";
+            }
+
         }
 
         renderContainer.innerHTML = output;
