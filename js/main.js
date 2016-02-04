@@ -213,6 +213,7 @@
     var quoteMaxMinusButton = document.querySelector(".js-quote-max-minus-button");
     var quoteMaxPlusButton = document.querySelector(".js-quote-max-plus-button");
 
+    var includeHappyLittleIpsumInput = document.querySelector(".js-include-happy-little-ipsum");
     var includeHTMLInput = document.querySelector(".js-include-html-input");
 
     var generateButton = document.querySelector(".js-generate-button");
@@ -232,21 +233,31 @@
     // Render function
     var renderIpsum = function() {
         var output = "";
+        var currentParagraph = [];
+        var includeHappyLittleIpsum = includeHappyLittleIpsumInput.checked;
         var includeHTML = includeHTMLInput.checked;
 
-        clearRenderContainer();
         numberOfParagraphs = parseInt(paragraphInput.value, 10);
         quoteMin = parseInt(quoteMinInput.value, 10);
         quoteMax = parseInt(quoteMaxInput.value, 10);
 
         for (var i = 0; i < numberOfParagraphs; i++) {
-            if (includeHTML) {
-                output += "<p>&lt;p&gt;" + buildParagraph(quoteMin, quoteMax) + "&lt;/p&gt;</p>";
-            } else {
-                output += "<p>" + buildParagraph(quoteMin, quoteMax) + "</p>";
+            currentParagraph.push("<p>", buildParagraph(quoteMin, quoteMax), "</p>");
+
+            if (i === 0 && includeHappyLittleIpsum) {
+                currentParagraph.splice(1, 0, "Happy little ipsum. ");
             }
 
+            if (includeHTML) {
+                currentParagraph.splice(1, 0, "&lt;p&gt;");
+                currentParagraph.splice(currentParagraph.length - 1, 0, "&lt;p&gt;");
+            }
+
+            output += currentParagraph.join("");
+            currentParagraph = [];
         }
+
+        clearRenderContainer();
 
         renderContainer.innerHTML = output;
     };
@@ -365,6 +376,7 @@
             quoteMaxInput.value = quotes.length;
 
             // This ensures that there will be no duplicate quotes within a single paragraph
+            // More importantly, this also ensures that we do not infinite loop. This needs improvement.
         }
     });
 
