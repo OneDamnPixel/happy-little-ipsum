@@ -167,21 +167,19 @@ a {
 
 .copy-message {
     position: absolute;
-    top: -2px;
-    right: 21px;
-    background-color: rgba(white, 0.5);
+    top: 50%;
+    right: calc(100% + 0.5em);
+    transform: translateY(-50%);
+    padding: 4px;
+    border-radius: 2px;
     white-space: nowrap;
     line-height: 1;
 
     &.is-error {
-        padding: 4px;
-        border-radius: 2px;
         background-color: tomato;
     }
 
     &.is-success {
-        padding: 4px;
-        border-radius: 2px;
         background-color: limegreen;
     }
 }
