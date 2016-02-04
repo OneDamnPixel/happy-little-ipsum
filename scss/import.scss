@@ -15,15 +15,11 @@ html {
     line-height: 1.5;
     background-color: black;
 
-    background-image: url('images/happy-little-bg-medium.png');
+    background-image: url('images/happy-little-bg.png');
     background-position: top center;
     background-repeat: no-repeat;
 
     @include mq(64em) {
-        background-image: url('images/happy-little-bg-large.png');
-    }
-
-    @include mq(80em) {
         background-size: contain;
     }
 }
@@ -41,7 +37,7 @@ a {
 
 .container {
     margin: 0 auto;
-    //padding: 0 2em;
+    padding: 0 1em;
 }
 
 .container--small {
