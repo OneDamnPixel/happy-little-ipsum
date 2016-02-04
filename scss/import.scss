@@ -1,6 +1,10 @@
 @import 'normalize';
 @import 'mixins';
 
+
+// Presets
+// ---
+
 *,
 *:before,
 *:after {
@@ -24,7 +28,16 @@ html {
     }
 }
 
-body {}
+a {
+    border-bottom: 1px solid;
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+// Layout
+// ---
 
 .container {
     margin: 0 auto;
@@ -43,6 +56,11 @@ body {}
     max-width: 64em;
 }
 
+
+
+// ?
+// ---
+
 .header {
     padding: 15% 0;
     text-align: center;
@@ -50,6 +68,12 @@ body {}
 
 .logo {
     max-width: 32em;
+}
+
+.attribution {
+    font-size: 0.75em;
+    text-align: center;
+    color: white;
 }
 
 .generate-options {
@@ -149,9 +173,4 @@ body {}
     background-color: rgba(0, 0, 0, 0.75);
     text-align: center;
     color: white;
-
-    a {
-        font-weight: 700;
-        color: white;
-    }
 }
