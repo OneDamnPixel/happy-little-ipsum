@@ -87,7 +87,6 @@
         return array[index];
     }
 
-
     function copyToClipboardMsg(elem, msgElem) {
         var succeed = copyToClipboard(elem);
         var msg;
@@ -231,16 +230,13 @@
     }
 
 
+
     // Render function
     var renderIpsum = function() {
         var output = "";
         var currentParagraph = [];
         var includeHappyLittleIpsum = includeHappyLittleIpsumInput.checked;
         var includeHTML = includeHTMLInput.checked;
-
-        //numberOfParagraphs = parseInt(paragraphInput.value, 10);
-        //quoteMin = parseInt(quoteMinInput.value, 10);
-        //quoteMax = parseInt(quoteMaxInput.value, 10);
 
         for (var i = 0; i < numberOfParagraphs; i++) {
             currentParagraph.push("<p>", buildParagraph(quoteMin, quoteMax), "</p>");
@@ -276,78 +272,54 @@
     // Generate happy little ipsum
     generateButton.addEventListener("click", renderIpsum);
 
-
-
-    // Generate happy little ipsum
+    // Copy text
     copyTextButton.addEventListener("click", function(e) {
         e.preventDefault;
 
         copyToClipboardMsg(renderContainer, copyMessage);
     });
 
-
-
     // Number of paragraphs
     paragraphMinusButton.addEventListener('click', function(event) {
-        // If numberOfParagraphs is greater than the minimum allowed value
         if (numberOfParagraphs > 1) {
-
-            // Reduce numberOfParagraphs by 1
             numberOfParagraphs--;
             updateHTML(paragraphValue, numberOfParagraphs);
         }
     });
 
     paragraphPlusButton.addEventListener('click', function(event) {
-        // If numberOfParagraphs is less than the maximum allowed value
         if (numberOfParagraphs < MAX_PARAGRAPHS) {
-
-            // Increase numberOfParagraphs by 1
             numberOfParagraphs++;
             updateHTML(paragraphValue, numberOfParagraphs);
         }
     });
 
-
-
-    // Min quotes
+    // Min quotes per paragraph
     quoteMinMinusButton.addEventListener('click', function(event) {
-        // If quoteMin is greater than the minimum allowed value
         if (quoteMin > 1) {
-
-            // Reduce quoteMin by 1
             quoteMin--;
             updateHTML(quoteMinValue, quoteMin);
         }
     });
 
     quoteMinPlusButton.addEventListener('click', function(event) {
-        // If quoteMin is less than quoteMax
         if (quoteMin < quoteMax) {
-
-            // Increase min quotes input value by 1
             quoteMin++;
             updateHTML(quoteMinValue, quoteMin);
         }
     });
 
-
-    // Max quotes
+    // Max quotes per paragraph
     quoteMaxMinusButton.addEventListener('click', function(event) {
-        // If quoteMax is greater than quoteMin
         if (quoteMax > quoteMin) {
-
-            // Reduce quoteMax by 1
             quoteMax--;
             updateHTML(quoteMaxValue, quoteMax);
         }
     });
 
     quoteMaxPlusButton.addEventListener('click', function(event) {
-        // If max quotes input value is less than the number of available quotes
+        // Maximum number of quotes per paragraph should not exceed the number of available quotes, otherwise infinite loop
         if (quoteMax < quotes.length) {
-
-            // Increase max quotes input value by 1
             quoteMax++;
             updateHTML(quoteMaxValue, quoteMax);
         }
