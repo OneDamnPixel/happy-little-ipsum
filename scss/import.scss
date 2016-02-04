@@ -41,7 +41,7 @@ a {
 
 .container {
     margin: 0 auto;
-    padding: 0 2em;
+    //padding: 0 2em;
 }
 
 .container--small {
@@ -76,16 +76,22 @@ a {
     color: white;
 }
 
-.generate-options {
+.generate-options-wrapper {
     margin-bottom: 2em;
     padding: 2em;
     background-color: rgba(0, 0, 0, 0.75);
     border-radius: 0.5em;
     color: white;
+}
+
+.generate-options {
+    max-width: 32em;
+    margin: 0 auto;
 
     label {
         display: block;
         margin-bottom: 5px;
+        cursor: pointer;
     }
 }
 
@@ -120,16 +126,20 @@ a {
 
 .copy-text-button-wrapper {
     position: absolute;
-    top: 0.5em;
-    right: 0.5em;
+    top: 0;
+    right: 0;
 }
 
 .copy-text-button {
-    height: 16px;
-    padding: 0;
+    padding: 0.5em;
+    padding-bottom: 0;
     border: 0;
     background-color: transparent;
     color: white;
+
+    img {
+        width: 1em;
+    }
 }
 
 .copy-message {
