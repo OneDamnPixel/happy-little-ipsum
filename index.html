@@ -19,30 +19,37 @@
         <main class="container container--medium" role="main">
             <div class="generate-options-wrapper">
                 <div class="generate-options">
-                    <label># of paragraphs</label>
-                    <button class="increment-button js-paragraph-minus-button">-</button>
-                    <input class="js-paragraph-input number" max="100" min="1" type="number" value="4">
-                    <button class="increment-button js-paragraph-plus-button">+</button>
 
-                    <br><br>
+                    <ol class="option-counters">
+                        <li>
+                            <div class="option-counter-title"># of paragraphs</div>
+                            <button class="increment-button js-paragraph-minus-button">-</button>
+                            <input class="js-paragraph-input number" max="100" min="1" type="number" value="4">
+                            <button class="increment-button js-paragraph-plus-button">+</button>
+                        </li>
+                        <li>
+                            <div class="option-counter-title">Min. quotes each</div>
+                            <button class="increment-button js-quote-min-minus-button">-</button>
+                            <input class="js-quote-min-input number" min="1" type="number" value="3">
+                            <button class="increment-button js-quote-min-plus-button">+</button>
+                        </li>
+                        <li>
+                            <div class="option-counter-title">Max. quotes each</div>
+                            <button class="increment-button js-quote-max-minus-button">-</button>
+                            <input class="js-quote-max-input number" min="1" type="number" value="5">
+                            <button class="increment-button js-quote-max-plus-button">+</button>
+                        </li>
+                    </ol>
 
-                    <label>Min. quotes per paragraph</label>
-                    <button class="increment-button js-quote-min-minus-button">-</button>
-                    <input class="js-quote-min-input number" min="1" type="number" value="3">
-                    <button class="increment-button js-quote-min-plus-button">+</button>
+                    <label>
+                        <input type="checkbox">
+                        <span>Start with "Happy little ipsum"</span>
+                    </label>
 
-                    <br><br>
-
-                    <label>Max. quotes per paragraph</label>
-                    <button class="increment-button js-quote-max-minus-button">-</button>
-                    <input class="js-quote-max-input number" min="1" type="number" value="5">
-                    <button class="increment-button js-quote-max-plus-button">+</button>
-
-                    <br><br>
-
-                    <label><input type="checkbox" class="js-include-html-input"> Include HTML Tags</label>
-
-                    <br><br>
+                    <label>
+                        <input type="checkbox" class="js-include-html-input">
+                        <span>Include HTML Tags</span>
+                    </label>
 
                     <button class="generate-button js-generate-button">Generate</button>
                 </div>

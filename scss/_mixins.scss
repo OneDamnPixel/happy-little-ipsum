@@ -1,3 +1,11 @@
+@mixin clearfix {
+    &:before {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
 @mixin mq($value, $property: min-width, $media: screen) {
     @media #{$media} and ($property: $value) {
         @content;
