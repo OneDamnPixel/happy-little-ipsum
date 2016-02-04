@@ -5,9 +5,11 @@
     ////////////////////////////////////////
 
     // Happy little variables
-    var numberOfParagraphs;
-    var quoteMin;
-    var quoteMax;
+    var numberOfParagraphs = 4;
+    var MAX_PARAGRAPHS = 100;
+
+    var quoteMin = 3;
+    var quoteMax = 5;
 
     var quotes = [
         "That'll be our little secret."
@@ -201,15 +203,15 @@
     ////////////////////////////////////////
 
     // Element references
-    var paragraphInput = document.querySelector(".js-paragraph-input");
+    var paragraphValue = document.querySelector(".js-paragraph-value");
     var paragraphMinusButton = document.querySelector(".js-paragraph-minus-button");
     var paragraphPlusButton = document.querySelector(".js-paragraph-plus-button");
 
-    var quoteMinInput = document.querySelector(".js-quote-min-input");
+    var quoteMinValue = document.querySelector(".js-quote-min-value");
     var quoteMinMinusButton = document.querySelector(".js-quote-min-minus-button");
     var quoteMinPlusButton = document.querySelector(".js-quote-min-plus-button");
 
-    var quoteMaxInput = document.querySelector(".js-quote-max-input");
+    var quoteMaxValue = document.querySelector(".js-quote-max-value");
     var quoteMaxMinusButton = document.querySelector(".js-quote-max-minus-button");
     var quoteMaxPlusButton = document.querySelector(".js-quote-max-plus-button");
 
@@ -224,10 +226,9 @@
 
 
     // Helper functions
-    function clearRenderContainer() {
-        renderContainer.innerHTML = "";
-    };
-
+    function updateHTML(target, value) {
+        target.innerHTML = value;
+    }
 
 
     // Render function
@@ -237,9 +238,9 @@
         var includeHappyLittleIpsum = includeHappyLittleIpsumInput.checked;
         var includeHTML = includeHTMLInput.checked;
 
-        numberOfParagraphs = parseInt(paragraphInput.value, 10);
-        quoteMin = parseInt(quoteMinInput.value, 10);
-        quoteMax = parseInt(quoteMaxInput.value, 10);
+        //numberOfParagraphs = parseInt(paragraphInput.value, 10);
+        //quoteMin = parseInt(quoteMinInput.value, 10);
+        //quoteMax = parseInt(quoteMaxInput.value, 10);
 
         for (var i = 0; i < numberOfParagraphs; i++) {
             currentParagraph.push("<p>", buildParagraph(quoteMin, quoteMax), "</p>");
@@ -257,7 +258,7 @@
             currentParagraph = [];
         }
 
-        clearRenderContainer();
+        updateHTML(renderContainer, "");
 
         renderContainer.innerHTML = output;
     };
@@ -286,115 +287,69 @@
 
 
 
-    // Paragraph inputs
-    paragraphInput.addEventListener('blur', function(event) {
-        // If paragraph input value is less than the minimum allowed value
-        if (parseInt(paragraphInput.value, 10) < 1) {
-
-            // Set paragraph input value equal to the minimum allowed value
-            paragraphInput.value = 1;
-        }
-
-        // If paragraph input value is greater than the allowed maximum value
-        if (parseInt(paragraphInput.value, 10) > 100) {
-
-            // Set paragraph input value equal to the maximum allowed value
-            paragraphInput.value = 100;
-        }
-    });
-
+    // Number of paragraphs
     paragraphMinusButton.addEventListener('click', function(event) {
-        // If paragraph input value is greater than the minimum allowed value
-        if (parseInt(paragraphInput.value, 10) > 1) {
+        // If numberOfParagraphs is greater than the minimum allowed value
+        if (numberOfParagraphs > 1) {
 
-            // Reduce paragraph input value by 1
-            paragraphInput.value--;
+            // Reduce numberOfParagraphs by 1
+            numberOfParagraphs--;
+            updateHTML(paragraphValue, numberOfParagraphs);
         }
     });
 
     paragraphPlusButton.addEventListener('click', function(event) {
-        // If paragraph input value is less than the maximum allowed value
-        if (parseInt(paragraphInput.value, 10) < 100) {
+        // If numberOfParagraphs is less than the maximum allowed value
+        if (numberOfParagraphs < MAX_PARAGRAPHS) {
 
-            // Increase paragraph input value by 1
-            paragraphInput.value++;
+            // Increase numberOfParagraphs by 1
+            numberOfParagraphs++;
+            updateHTML(paragraphValue, numberOfParagraphs);
         }
     });
 
 
 
-    // Min inputs
-    quoteMinInput.addEventListener('blur', function(event) {
-        // If min quotes input value is less than minimum allowed value
-        if (parseInt(quoteMinInput.value, 10) < 1) {
-
-            // Set min quotes input value equal to the minimum allowed value
-            quoteMinInput.value = 1;
-        }
-
-        // If min quotes input value is greater than max quotes input value
-        if (parseInt(quoteMinInput.value, 10) > parseInt(quoteMaxInput.value, 10)) {
-
-            // Set min quotes input value equal to max quotes input value
-            quoteMinInput.value = quoteMaxInput.value;
-        }
-    });
-
+    // Min quotes
     quoteMinMinusButton.addEventListener('click', function(event) {
-        // If min quotes input value is greater than the minimum allowed value
-        if (parseInt(quoteMinInput.value, 10) > 1) {
+        // If quoteMin is greater than the minimum allowed value
+        if (quoteMin > 1) {
 
-            // Reduce min quotes input value by 1
-            quoteMinInput.value--;
+            // Reduce quoteMin by 1
+            quoteMin--;
+            updateHTML(quoteMinValue, quoteMin);
         }
     });
 
     quoteMinPlusButton.addEventListener('click', function(event) {
-        // If min quotes input value is less than max quotes input value
-        if (parseInt(quoteMinInput.value, 10) < parseInt(quoteMaxInput.value, 10)) {
+        // If quoteMin is less than quoteMax
+        if (quoteMin < quoteMax) {
 
             // Increase min quotes input value by 1
-            quoteMinInput.value++;
+            quoteMin++;
+            updateHTML(quoteMinValue, quoteMin);
         }
     });
 
 
-
-    // Max inputs
-    quoteMaxInput.addEventListener('blur', function(event) {
-        // If max quotes input value is less than min quotes input value
-        if (parseInt(quoteMaxInput.value, 10) < parseInt(quoteMinInput.value, 10)) {
-
-            // Set max quotes input value equal to min quotes input value
-            quoteMaxInput.value = quoteMinInput.value;
-        }
-
-        // If max quotes input value is greater than the number of available quotes
-        if (parseInt(quoteMaxInput.value, 10) > quotes.length) {
-
-            // Set max quotes input value equal to the number of available quotes
-            quoteMaxInput.value = quotes.length;
-
-            // This ensures that there will be no duplicate quotes within a single paragraph
-            // More importantly, this also ensures that we do not infinite loop. This needs improvement.
-        }
-    });
-
+    // Max quotes
     quoteMaxMinusButton.addEventListener('click', function(event) {
-        // If max quotes input value is greater than min quotes input value
-        if (parseInt(quoteMaxInput.value, 10) > parseInt(quoteMinInput.value, 10)) {
+        // If quoteMax is greater than quoteMin
+        if (quoteMax > quoteMin) {
 
-            // Reduce max quotes input value by 1
-            quoteMaxInput.value--;
+            // Reduce quoteMax by 1
+            quoteMax--;
+            updateHTML(quoteMaxValue, quoteMax);
         }
     });
 
     quoteMaxPlusButton.addEventListener('click', function(event) {
         // If max quotes input value is less than the number of available quotes
-        if (parseInt(quoteMaxInput.value, 10) < quotes.length) {
+        if (quoteMax < quotes.length) {
 
             // Increase max quotes input value by 1
-            quoteMaxInput.value++;
+            quoteMax++;
+            updateHTML(quoteMaxValue, quoteMax);
         }
     });
 

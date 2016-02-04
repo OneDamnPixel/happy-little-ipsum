@@ -117,13 +117,18 @@ a {
     margin-bottom: 1em;
 }
 
-.increment-button {
+.option-counter-button {
     height: 2em;
     width: 2em;
     border: 1px solid white;
     border-radius: 50%;
     background-color: transparent;
     line-height: 1;
+}
+
+.option-counter-value {
+    display: inline-block;
+    width: 2em;
 }
 
 .generate-button {
@@ -135,16 +140,6 @@ a {
     border-radius: 50px;
     background-color: transparent;
     line-height: 1;
-}
-
-.number {
-    height: 34px;
-    width: 50px;
-    border: 0;
-    background-color: transparent;
-    color: white;
-    line-height: 1;
-    text-align: center;
 }
 
 .copy-text-button-wrapper {
