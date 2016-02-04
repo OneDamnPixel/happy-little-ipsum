@@ -13,44 +13,52 @@
                 <img class="logo" src="images/happy-little-logo.svg" alt="Happy Little Logo">
             </header>
             <p class="attribution">
-                <a href="http://pixels.com/featured/natures-grandeur-c-steele.html" target="_blank">Artist: C. Steele &copy; 2015 All Rights Reserved</a>
+                <a href="http://pixels.com/featured/natures-grandeur-c-steele.html" target="_blank">Artist: C. Steele &copy; 2016 All Rights Reserved</a>
             </p>
         </div>
         <main class="container container--medium" role="main">
-            <div class="generate-options">
-                <label># of paragraphs</label>
-                <button class="increment-button js-paragraph-minus-button">-</button>
-                <input class="js-paragraph-input number" max="100" min="1" type="number" value="4">
-                <button class="increment-button js-paragraph-plus-button">+</button>
+            <div class="generate-options-wrapper">
+                <div class="generate-options">
 
-                <br><br>
+                    <ol class="option-counters">
+                        <li>
+                            <div class="option-counter-title"># of paragraphs</div>
+                            <button class="increment-button js-paragraph-minus-button">-</button>
+                            <input class="js-paragraph-input number" max="100" min="1" type="number" value="4">
+                            <button class="increment-button js-paragraph-plus-button">+</button>
+                        </li>
+                        <li>
+                            <div class="option-counter-title">Min. quotes each</div>
+                            <button class="increment-button js-quote-min-minus-button">-</button>
+                            <input class="js-quote-min-input number" min="1" type="number" value="3">
+                            <button class="increment-button js-quote-min-plus-button">+</button>
+                        </li>
+                        <li>
+                            <div class="option-counter-title">Max. quotes each</div>
+                            <button class="increment-button js-quote-max-minus-button">-</button>
+                            <input class="js-quote-max-input number" min="1" type="number" value="5">
+                            <button class="increment-button js-quote-max-plus-button">+</button>
+                        </li>
+                    </ol>
 
-                <label>Min. quotes per paragraph</label>
-                <button class="increment-button js-quote-min-minus-button">-</button>
-                <input class="js-quote-min-input number" min="1" type="number" value="3">
-                <button class="increment-button js-quote-min-plus-button">+</button>
+                    <label>
+                        <input type="checkbox" class="js-include-happy-little-ipsum" checked>
+                        <span>Start with "Happy little ipsum"</span>
+                    </label>
 
-                <br><br>
+                    <label>
+                        <input type="checkbox" class="js-include-html-input">
+                        <span>Include HTML Tags</span>
+                    </label>
 
-                <label>Max. quotes per paragraph</label>
-                <button class="increment-button js-quote-max-minus-button">-</button>
-                <input class="js-quote-max-input number" min="1" type="number" value="5">
-                <button class="increment-button js-quote-max-plus-button">+</button>
-
-                <br><br>
-
-                <label><input type="checkbox" class="js-include-happy-little-ipsum" checked> Start first paragraph with "Happy little ipsum"</label>
-                <label><input type="checkbox" class="js-include-html-input"> Include HTML Tags</label>
-
-                <br><br>
-
-                <button class="generate-button js-generate-button">Generate</button>
+                    <button class="generate-button js-generate-button">Generate</button>
+                </div>
             </div>
             <div class="generated-content">
                 <div class="copy-text-button-wrapper">
-                    <button class="copy-text-button js-copy-text-button"><svg class="clipboard-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28" height="28" viewBox="0 0 28 28">
-    <path d="M12 26h14v-10h-6.5q-0.625 0-1.062-0.438t-0.438-1.062v-6.5h-6v18zM16 3.5v-1q0-0.203-0.148-0.352t-0.352-0.148h-11q-0.203 0-0.352 0.148t-0.148 0.352v1q0 0.203 0.148 0.352t0.352 0.148h11q0.203 0 0.352-0.148t0.148-0.352zM20 14h4.672l-4.672-4.672v4.672zM28 16v10.5q0 0.625-0.438 1.062t-1.062 0.438h-15q-0.625 0-1.062-0.438t-0.438-1.062v-2.5h-8.5q-0.625 0-1.062-0.438t-0.438-1.062v-21q0-0.625 0.438-1.062t1.062-0.438h17q0.625 0 1.062 0.438t0.438 1.062v5.125q0.328 0.203 0.562 0.437l6.375 6.375q0.438 0.438 0.75 1.188t0.313 1.375z"></path>
-    </svg></button>
+                    <button class="copy-text-button js-copy-text-button" title="Copy to clipboard">
+                        <img src="images/clipboard.svg" alt="Clipboard" style="width: 1em;">
+                    </button>
                     <span class="copy-message js-copy-message"></span>
                 </div>
                 <div class="js-render-container"></div>
