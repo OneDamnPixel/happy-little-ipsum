@@ -14,13 +14,19 @@
 html {
     line-height: 1.5;
     background-color: black;
+    color: white;
 
-    background-image: url('images/happy-little-bg.png');
-    background-position: top center;
-    background-repeat: no-repeat;
+    &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
 
-    @include mq(64em) {
-        background-size: contain;
+        background-image: linear-gradient(transparent 75%, black), url('images/happy-little-bg.jpg');
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 }
 
