@@ -1,7 +1,8 @@
 var gulp   = require('gulp'),
     sass   = require('gulp-sass'),
     prefix = require('gulp-autoprefixer'),
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
+    browserSync = require('browser-sync').create();
 
 gulp.task('sass', function() {
     gulp.src('./scss/**/*.scss')
@@ -10,11 +11,21 @@ gulp.task('sass', function() {
         }))
         .pipe(prefix())
         .pipe(rename('styles.css'))
-        .pipe(gulp.dest('./'));
+        .pipe(gulp.dest('./'))
+        .pipe(browserSync.stream());
 });
 
-gulp.task('watch', function () {
+gulp.task('serve', function() {
+    browserSync.init({
+        server: {
+            server: "./"
+        }
+    });
+
     gulp.watch('./scss/**/*.scss', ['sass']);
+    gulp.watch("./*.html").on('change', browserSync.reload);
 });
 
-gulp.task('default', ['sass', 'watch']);
+
+
+gulp.task('default', ['serve']);
