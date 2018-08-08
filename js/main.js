@@ -247,7 +247,7 @@
 
             if (includeHTML) {
                 currentParagraph.splice(1, 0, "&lt;p&gt;");
-                currentParagraph.splice(currentParagraph.length - 1, 0, "&lt;p&gt;");
+                currentParagraph.splice(currentParagraph.length - 1, 0, "&lt;\/p&gt;");
             }
 
             output += currentParagraph.join("");
