@@ -5,18 +5,27 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Happy Little Ipsum</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+        <link href="https://fonts.googleapis.com/css2?family=Neuton&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="styles.css">
+        <script>
+            function changeImg(imgNumber)	{
+			var myImages = ['images/backgrounds/1.jpg', 'images/backgrounds/2.jpg', 'images/backgrounds/3.jpg', 'images/backgrounds/4.jpg', 'images/backgrounds/5.jpg', 'images/backgrounds/6.jpg', 'images/backgrounds/7.jpg', 'images/backgrounds/8.jpg', 'images/backgrounds/9.jpg', 'images/backgrounds/10.jpg', 'images/backgrounds/11.jpg', 'images/backgrounds/12.jpg']; 
+			var imgShown = document.body.style.backgroundImage;
+			var newImgNumber = Math.floor(Math.random()*myImages.length);
+			document.body.style.backgroundImage = 'url('+myImages[newImgNumber]+')';
+		}
+		window.onload=changeImg;
+        </script>
     </head>
     <body>
-        <div class="container container--small">
+        <img src="images/Bob-Ross.png" class="bob" />
+        <div class="container container--large">
             <header class="header">
                 <h1>
-                    <img class="logo" src="images/happy-little-logo.svg" alt="Happy Little Ipsum">
+                    <img class="logo" src="images/hli.png" alt="Happy Little Ipsum">
                 </h1>
             </header>
-            <p class="attribution">
-                <a href="http://pixels.com/featured/natures-grandeur-c-steele.html" target="_blank">Artist: C. Steele &copy; 2016 All Rights Reserved</a>
-            </p>
         </div>
         <main class="container container--medium">
             <div class="generate-options-wrapper">
@@ -30,13 +39,13 @@
                             <button class="option-counter-button js-paragraph-plus-button">+</button>
                         </li>
                         <li>
-                            <div class="option-counter-title">Min. quotes each</div>
+                            <div class="option-counter-title">Min. quotes per paragraph</div>
                             <button class="option-counter-button js-quote-min-minus-button">-</button>
                             <span class="option-counter-value js-quote-min-value">3</span>
                             <button class="option-counter-button js-quote-min-plus-button">+</button>
                         </li>
                         <li>
-                            <div class="option-counter-title">Max. quotes each</div>
+                            <div class="option-counter-title">Max. quotes per paragraph</div>
                             <button class="option-counter-button js-quote-max-minus-button">-</button>
                             <span class="option-counter-value js-quote-max-value">5</span>
                             <button class="option-counter-button js-quote-max-plus-button">+</button>
@@ -53,13 +62,13 @@
                         <span>Include HTML Tags</span>
                     </label>
 
-                    <button class="generate-button js-generate-button">Generate</button>
+                    <button class="generate-button js-generate-button button">Generate</button>
                 </div>
             </div>
             <div class="generated-content">
                 <div class="copy-text-button-wrapper">
-                    <button class="copy-text-button js-copy-text-button" title="Copy to clipboard">
-                        <img src="images/clipboard.svg" alt="Clipboard" style="width: 1em;">
+                    <button class="copy-text-button js-copy-text-button button" title="Copy to clipboard">
+                        <img src="images/clipboard.svg" alt="Clipboard" style="width: 1em;"> Copy to clipboard
                     </button>
                     <span class="copy-message js-copy-message"></span>
                 </div>
@@ -67,6 +76,10 @@
             </div>
         </main>
         <footer class="footer">
+            <p class="attribution">
+                Photos from <a href="https://unsplash.com/s/photos/mountains">Unsplash</a>
+                <!--<a href="http://pixels.com/featured/natures-grandeur-c-steele.html" target="_blank">Artist: C. Steele &copy; 2016 All Rights Reserved</a>-->
+            </p>
             <div class="container container--medium">
                 A happy little accident by <a href="https://twitter.com/elena_scherer" target="_blank">Elena</a>, <a href="https://twitter.com/dan_reid" target="_blank">Daniel</a>, and <a href="https://twitter.com/cmegown" target="_blank">Corey</a>. View the source <a href="https://github.com/OneDamnPixel/happy-little-ipsum" target="_blank">here</a>, contributions welcome.
             </div>
